@@ -1,0 +1,22 @@
+.filterWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.input:focus {
+  box-shadow: 0px 0px 2px 2px rgb(155, 178, 244);
+  border-color: rgb(155, 178, 244);
+  outline: none;
+}
