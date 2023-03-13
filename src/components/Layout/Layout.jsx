@@ -1,10 +1,17 @@
-import css from './Layout.module.css';
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { Header } from '../Header/Header';
+import { Suspense } from 'react';
 
-export const Layout = ({ children }) => {
-  return <main className={css.container}>{children}</main>;
-};
+export const Layout = () => {
+  return (
+    <>
+      <Header />
 
-Layout.propTypes = {
-  children: PropTypes.node,
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
+  );
 };

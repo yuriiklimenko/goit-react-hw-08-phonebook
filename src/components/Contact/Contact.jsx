@@ -1,26 +1,41 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
-import css from './Contact.module.css';
-import Button from 'components/UI/Button/Button';
+import { deleteContact } from '../../redux/contacts/operations';
+
 import PropTypes from 'prop-types';
 
-export const Contact = ({ contact }) => {
+import { TableRow, TableCell, IconButton } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
+import Avatar from 'react-avatar';
+import { toast } from 'react-toastify';
+
+export const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(contact.id));
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
-    <li className={css.item}>
-      <p className={css.name}>{contact.name}: </p>
-      <p className={css.tel}>{contact.phone}</p>
-      <Button onClick={handleDelete}>Delete</Button>
-    </li>
+    <TableRow key={id}>
+      <TableCell component="th" scope="row" align="center">
+        <Avatar name={name} size={30} round={true} />
+      </TableCell>
+      <TableCell align="center">{name}</TableCell>
+      <TableCell align="center">{number}</TableCell>
+      <TableCell align="center">
+        <IconButton
+          color="error"
+          onClick={() => {
+            toast.info('Your contact has been deleted!');
+            dispatch(handleDelete);
+          }}
+        >
+          <ClearIcon />
+        </IconButton>
+      </TableCell>
+    </TableRow>
   );
 };
 
 Contact.propTypes = {
-  contact: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-  }).isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
