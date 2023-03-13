@@ -2,14 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import {
-  IconButton,
-  LogoutIcon,
-  Box,
-  Typography,
-  CircularProgress,
-  Button,
-} from '@mui/material';
+import { Box, Typography, CircularProgress, Button } from '@mui/material';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();

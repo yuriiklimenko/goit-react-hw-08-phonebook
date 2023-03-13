@@ -1,7 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import LoginIcon from '@mui/icons-material/Login';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import { Box, ButtonIcon } from '@mui/material';
+import { Box } from '@mui/material';
 
 export const AuthNav = () => {
   return (
@@ -13,14 +11,8 @@ export const AuthNav = () => {
         alignItems: 'center',
       }}
     >
-      <NavLink to="/register">
-        {/* <AppRegistrationIcon /> */}
-        Register
-      </NavLink>
-      <NavLink to="/login">
-        {/* <LoginIcon /> */}
-        Log In
-      </NavLink>
+      <NavLink to="/register">Register</NavLink>
+      <NavLink to="/login">Log In</NavLink>
     </Box>
   );
 };
